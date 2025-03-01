@@ -1,0 +1,22 @@
+{
+  "name": "contexto-generator",
+  "version": "0.0.1",
+  "description": "Genera un archivo contexto_repo.txt con la estructura y contenido del proyecto.",
+  "type": "module",
+  "bin": {
+    "generate-context": "./bin/generate-context.js"
+  },
+  "scripts": {
+    "generate": "generate-context"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juancho637/contexto-generator.git"
+  },
+  "author": "Juan David Garcia",
+  "license": "MIT",
+  "dependencies": {
+    "minimatch": "^10.0.1",
+    "minimist": "^1.2.8"
+  }
+}
