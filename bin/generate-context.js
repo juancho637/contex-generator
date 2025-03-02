@@ -9,7 +9,7 @@
  */
 
 // ======================================================
-// Section 1: Imports and dependencies
+// Section 1: Imports and Dependencies
 // ======================================================
 import minimist from 'minimist';
 import fs from 'fs';
@@ -19,11 +19,11 @@ import { generateTree, findFiles } from '../lib/tree.js';
 import { showHelp } from '../lib/help.js';
 
 // ======================================================
-// Section 2: Process command-line arguments (preliminary)
+// Section 2: Process Command-Line Arguments (Preliminary)
 // ======================================================
 const args = minimist(process.argv.slice(2));
 const command = args._[0];
-const DEFAULT_OUTPUT = "project.context-generator.txt"; // Default if using an output directory different than root.
+const DEFAULT_OUTPUT = "project.context-generator.txt"; // Default output file name if using an output directory different than root.
 
 // Show help message if -h or --help flag is present.
 if (args.h || args.help) {
@@ -41,12 +41,12 @@ if (command === 'init') {
 const rawOutput = args.n || args.name;
 
 // ======================================================
-// Section 3: Read configuration (including outDir)
+// Section 3: Read Configuration (including outDir)
 // ======================================================
 const config = readConfig();
 
 // ======================================================
-// Section 4: Determine final output file name based on outDir
+// Section 4: Determine Final Output File Name Based on outDir
 // ======================================================
 let outputFile = "";
 const ROOT_OUT_DIR = "./";
@@ -73,7 +73,7 @@ if (config.outDir === ROOT_OUT_DIR) {
 }
 
 // ======================================================
-// Section 5: Auxiliary function to write output in the specified directory
+// Section 5: Auxiliary Function to Write Output in the Specified Directory
 // ======================================================
 function writeOutput(content) {
   // Determine the output directory.
@@ -89,17 +89,17 @@ function writeOutput(content) {
 }
 
 // ======================================================
-// Section 6: Main function to generate context
+// Section 6: Main Function to Generate Context
 // ======================================================
 function main() {
   let output = '';
 
-  // 6.1: Directory tree structure.
+  // 6.1: Generate Directory and Files Structure Tree.
   output += "### Directory and Files Structure ###\n";
   output += generateTree(process.cwd(), config);
   output += "\n";
 
-  // 6.2: File contents.
+  // 6.2: Include File Contents.
   output += "\n### File Contents ###\n";
   const allFiles = findFiles(process.cwd(), config, () => true);
   const seen = new Set();
@@ -130,6 +130,6 @@ function main() {
 }
 
 // ======================================================
-// Section 7: Execute the script
+// Section 7: Execute the Script
 // ======================================================
 main();
